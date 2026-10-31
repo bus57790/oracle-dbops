@@ -7,22 +7,19 @@ spec:
   ttlSecondsAfterFinished: 300
   template:
     spec:
-      # Add secret reference if repository is private
-      imagePullSecrets:
-      - name: dockerhub-secret
       containers:
       - name: oracle-runner
-        image: bus57790/oracle-dbops:v1.0
+        image: bus57790/oracle-dbops:1
         imagePullPolicy: Always
         command: ["/bin/bash", "-c"]
         args:
           - |
-            sqlplus sys/"${DB_PASSWORD}"@//192.168.1.188:1521/ORCL as sysdba @/data/scripts/manage_db.sql
+            sqlplus sys/"${DB_PASSWORD}"@//192.168.1.188:1521/ORCLCDB as sysdba @/data/scripts/manage_db.sql
         env:
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: oracle-db-secret
-              key: YourStrongPassword123!
+              key: SYS_PASSWORD
       restartPolicy: Never
   backoffLimit: 1
