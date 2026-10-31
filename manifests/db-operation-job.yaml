@@ -14,7 +14,7 @@ spec:
         command: ["/bin/bash", "-c"]
         args:
           - |
-            sqlplus sys/"${DB_PASSWORD}"@//192.168.1.188:1521/ORCLCDB as sysdba @/data/scripts/manage_db.sql
+            sqlplus sys/"${DB_PASSWORD}"@//192.168.1.188:1521/ORCL as sysdba @/data/scripts/manage_db.sql
         env:
         - name: DB_PASSWORD
           valueFrom:
