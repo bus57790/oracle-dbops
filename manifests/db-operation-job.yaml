@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
       - name: oracle-runner
-        image: bus57790/oracle-dbops:1
+        image: bus57790/oracle-dbops:2
         imagePullPolicy: Always
         command: ["/bin/bash", "-c"]
         args:
